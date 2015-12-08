@@ -4,6 +4,10 @@ $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+$color-01:          darken(#86D69A, 10%);
+$color-02:          #86D69A;
+$highlight:         #F6E27F;
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -13,81 +17,107 @@ $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 
 /* Space out content a bit */
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+
+  background: $color-01;
+
+  font-size: 24px;
+
+  //font-family: 'Orbitron', sans-serif;
+  //font-family: 'Monda', sans-serif;
+  font-family: 'VT323', ;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
+[class*="col-"] {
+  padding: 0;
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
+.table {
+  td:first-child,
+  th:first-child {
+    padding: 20px 20px 20px 40px;
+  }
+  td:last-child,
+  th:last-child {
+    padding: 20px 40px 20px 20px;
+  }
+  &.table-striped {
+    th {
+      border-bottom: 1px solid  darken($color-02, 20%);
+    }
+    td {
+      border-top: 1px solid darken($color-02, 20%);
+    }
+    tbody {
+      tr:nth-of-type(odd) {
+        background: $color-02;
+      }
+    }
   }
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
+.createEntry, .closer {
+  padding: 10px 20px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
 
-.container-narrow > hr {
-  margin: 30px 0;
-}
+  border: 0;
+  border-radius: 100px;
 
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+  border: 1px solid darken($color-02, 20%);
+
+  background: $highlight;
+
+  transition-duration: 1s;
+
+  &:hover {
+    background: $color-02;
   }
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-  p + h4 {
-    margin-top: 28px;
-  }
+.createEntry {
+  z-index: 1000;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
+.newEntry {
+  width: 100%;
+  height: 100%;
+
+  background: $color-01;
+
+  position: fixed;
+  z-index: 2000;
   .container {
-    max-width: 730px;
+    position: relative;
+    top: 50%;
+    transform: translatey(-50%);
   }
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
+  .timer {
+    font-size: 4em;
   }
 
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
+  .closer {
+    z-index: 2001;
   }
+}
 
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+.form-control {
+  font-size: 24px;
+  padding: 29px;
+  border: 1px solid darken($color-01, 10%);
+}
+
+.input-group-btn .btn {
+  font-size: 24px;
+  padding: 12px 36px;
+  background: $highlight;
+  border: 1px solid darken($color-01, 10%);
 }
